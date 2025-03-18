@@ -5,7 +5,7 @@ import java.util.Set;
 
 import mengdeADT.MengdeADT;
 
-public class JavaSetToMengde <T> {
+public class JavaSetToMengde <T> implements MengdeADT<T> {
 	
 	private Set<T> mengde;
 

@@ -1,5 +1,6 @@
 package mengdeADT;
 
+
 public interface MengdeADT<T> {
 	
 	/**
