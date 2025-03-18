@@ -2,7 +2,6 @@ package mengdeADT;
 
 public interface MengdeADT<T> {
 	
-
 	/**
 	 * @return Om mengden er tom
 	 */
