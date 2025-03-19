@@ -150,14 +150,11 @@ class JavaSetToMengdeTest {
 
 	    Integer[] tabell = mengde1.tilTabell();
 
-	    // Sjekk at arrayet har riktig lengde
 	    assertEquals(3, tabell.length);
 
-	    // Konverter til en liste for enklere sammenligning
 	    List<Integer> faktisk = Arrays.asList(tabell);
 	    List<Integer> forventet = Arrays.asList(10, 20, 30);
 
-	    // Sjekk at begge listene inneholder de samme elementene (uavhengig av rekkefølge)
 	    assertTrue(faktisk.containsAll(forventet) && forventet.containsAll(faktisk));
 	}
 }
