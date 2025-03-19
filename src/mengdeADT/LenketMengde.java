@@ -150,7 +150,7 @@ public class LenketMengde<T> implements MengdeADT<T> {
 	@Override
 	public T[] tilTabell() {
 		@SuppressWarnings("unchecked")
-		T[] tabell = (T[]) new Object[antall];
+		T[] tabell = (T[]) java.lang.reflect.Array.newInstance(start.data.getClass(), antall);
 		Node<T> aktuell = start;
 		int i = 0;
 		while (aktuell != null) {

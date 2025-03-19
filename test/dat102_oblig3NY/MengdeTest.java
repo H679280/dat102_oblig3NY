@@ -145,7 +145,8 @@ class MengdeTest {
 
 		Integer[] tabell = mengde1.tilTabell();
 		assertEquals(3, tabell.length);
-		assertTrue(tabell[0] == 10 || tabell[0] == 20 || tabell[0] == 30);
+		assertTrue(tabell[0].equals(10) || tabell[0].equals(20) || tabell[0].equals(30));
+
 
 	}
 
