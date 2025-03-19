@@ -5,7 +5,7 @@ import java.util.Set;
 
 import mengdeADT.MengdeADT;
 
-public class JavaSetToMengde <T> implements MengdeADT<T> {
+public class JavaSetToMengde<T> implements MengdeADT<T> {
 	
 	private Set<T> mengde;
 
@@ -64,10 +64,13 @@ public class JavaSetToMengde <T> implements MengdeADT<T> {
 
     @Override
     public MengdeADT<T> union(MengdeADT<T> annenMengde) {
+    	
+    	T[] elementer = annenMengde.tilTabell();
     	JavaSetToMengde<T> unionMengde = new JavaSetToMengde<>();
         unionMengde.mengde.addAll(this.mengde);
-        for (T element : annenMengde) {
-            unionMengde.leggTil(element);
+        
+        for (int i = 0; i<elementer.length;i++) {
+        	unionMengde.leggTil(elementer[i]);
         }
         return unionMengde;
         
@@ -88,13 +91,15 @@ public class JavaSetToMengde <T> implements MengdeADT<T> {
     public void leggTil(T element) {
     	mengde.add(element);
     }
-
+    
     @Override
     public void leggTilAlleFra(MengdeADT<T> annenMengde) {
-    	for (T element : annenMengde) {
-            leggTil(element);
-        }
+    	T[] elementer = annenMengde.tilTabell();
+    	for (int i = 0; i < elementer.length; i++) {
+    		leggTil(elementer[i]);
+    	} 
     }
+
 
     @Override
     public T fjern(T element) {
@@ -105,10 +110,11 @@ public class JavaSetToMengde <T> implements MengdeADT<T> {
     }
 
     @Override
+    @SuppressWarnings("unchecked")
     public T[] tilTabell() {
-    	return (T[]) mengde.toArray();
-        
+        return mengde.toArray((T[]) new Integer[mengde.size()]); 
     }
+
 
     @Override
     public int antallElementer() {

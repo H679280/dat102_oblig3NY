@@ -1,7 +1,9 @@
 package dat102_oblig3NY;
 
-import java.util.HashSet;
-import java.util.Set;
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -9,18 +11,17 @@ import org.junit.jupiter.api.Test;
 import oppgave_c.JavaSetToMengde;
 import mengdeADT.MengdeADT;
 
+class JavaSetToMengdeTest {
 
-public class JavaSetToMengdeTest <T> {
+	private JavaSetToMengde<Integer> mengde1;
+	private JavaSetToMengde<Integer> mengde2;
 	
-	private Set<T> mengde1;
-	private Set<Integer> mengde2;
-
 
 	
 	@BeforeEach
 	void setUp() {
-		mengde1 = new HashSet<>();
-		mengde2 = new HashSet<>();
+		mengde1 = new JavaSetToMengde<>();
+		mengde2 = new JavaSetToMengde<>();
 	}
 
 	@Test
@@ -48,7 +49,7 @@ public class JavaSetToMengdeTest <T> {
 		mengde1.leggTil(20);
 		assertEquals(20, mengde1.fjern(20), "fjerne 20");
 		assertEquals(11, mengde1.fjern(11), "fjerne 11");
-		assertNull(mengde1.fjern(4), " element som ikke finnnes skal returner null");
+		assertNull(mengde1.fjern(4), "element som ikke finnnes skal returner null");
 
 	}
 
@@ -143,14 +144,20 @@ public class JavaSetToMengdeTest <T> {
 
 	@Test
 	void testtilTabell() {
-		mengde1.leggTil(10);
-		mengde1.leggTil(20);
-		mengde1.leggTil(30);
+	    mengde1.leggTil(10);
+	    mengde1.leggTil(20);
+	    mengde1.leggTil(30);
 
-		Integer[] tabell = mengde1.tilTabell();
-		assertEquals(3, tabell.length);
-		assertTrue(tabell[0] == 10 || tabell[0] == 20 || tabell[0] == 30);
+	    Integer[] tabell = mengde1.tilTabell();
 
+	    // Sjekk at arrayet har riktig lengde
+	    assertEquals(3, tabell.length);
+
+	    // Konverter til en liste for enklere sammenligning
+	    List<Integer> faktisk = Arrays.asList(tabell);
+	    List<Integer> forventet = Arrays.asList(10, 20, 30);
+
+	    // Sjekk at begge listene inneholder de samme elementene (uavhengig av rekkefølge)
+	    assertTrue(faktisk.containsAll(forventet) && forventet.containsAll(faktisk));
 	}
-
 }
